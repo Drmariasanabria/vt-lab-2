@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Didactics Hub | VT Lab 2</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .hub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .method-card {
+            background: rgba(20, 20, 28, 0.8);
+            border: 1px solid var(--unican-dark);
+            padding: 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .method-card:hover {
+            border-color: var(--unican-red);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .method-card h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .method-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        #reader-display {
+            grid-column: 1 / -1;
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid var(--unican-red);
+            padding: 2rem;
+            min-height: 300px;
+            white-space: pre-wrap;
+            font-family: 'Inter', sans-serif;
+            color: #ddd;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <header class="cyber-header">
+        <div class="logo-container">
+            <h1 class="glitch" data-text="DIDACTICS HUB">DIDACTICS HUB</h1>
+            <p class="subtitle">Primary Education Methodology Base</p>
+        </div>
+        <div class="unican-badge">
+            <a href="../../index.html" style="color: inherit; text-decoration: none;">&lt; RETURN</a>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="glass-panel">
+            <h2>Methodology of the English Language</h2>
+            <p>Select a core methodology or document source to review the theoretical and practical framework for Primary Education.</p>
+
+            <div class="hub-grid">
+                <div class="method-card" onclick="loadContent('metodologia')">
+                    <h4>[SOURCE] Methodology Syllabus</h4>
+                    <p>Load the core principles from the "Metodologia Todo" document.</p>
+                </div>
+                <div class="method-card" onclick="loadContent('programacion')">
+                    <h4>[SOURCE] Programación Didáctica</h4>
+                    <p>Review the guidelines and structure for didactic programming in Primary Education.</p>
+                </div>
+                
+                <div id="reader-display"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../data/pdf_content.js"></script>
+    <script>
+        function loadContent(source) {
+            const display = document.getElementById('reader-display');
+            display.style.display = 'block';
+            display.innerHTML = "Initializing neural read...<br><br>";
+            
+            setTimeout(() => {
+                if (typeof pdfData !== 'undefined' && pdfData[source]) {
+                    const text = pdfData[source].content;
+                    display.textContent = `--- BEGIN TRANSMISSION: ${source.toUpperCase()} ---\n\n` + 
+                                          text.substring(0, 2000) + 
+                                          "\n\n[... DATA TRUNCATED FOR DISPLAY ...]";
+                } else {
+                    display.innerHTML = "<span style='color: red;'>ERROR: Knowledge base offline or missing.</span>";
+                }
+            }, 600);
+        }
+    </script>
+</body>
+</html>

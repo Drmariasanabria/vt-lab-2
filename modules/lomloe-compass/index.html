@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOMLOE Compass | VT Lab 2</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .compass-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .content-display {
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid var(--unican-red);
+            border-radius: 4px;
+            padding: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+            font-family: 'Inter', sans-serif;
+            white-space: pre-wrap;
+            color: #ddd;
+        }
+        .controls select, .controls button {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(186, 12, 47, 0.5);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .controls select:hover, .controls button:hover {
+            background: rgba(186, 12, 47, 0.2);
+            border-color: var(--unican-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <header class="cyber-header">
+        <div class="logo-container">
+            <h1 class="glitch" data-text="LOMLOE COMPASS">LOMLOE COMPASS</h1>
+            <p class="subtitle">Bachillerato Curriculum Database</p>
+        </div>
+        <div class="unican-badge">
+            <a href="../../index.html" style="color: inherit; text-decoration: none;">&lt; RETURN</a>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="glass-panel">
+            <h2>Activity Planner & Normative Guidance</h2>
+            <p>Access the legal framework and key competencies for the English subject in Bachillerato, extracted directly from the official documentation.</p>
+
+            <div class="compass-container">
+                <div class="controls">
+                    <select id="section-select">
+                        <option value="all">View Full Extracted Document</option>
+                        <option value="competencies">Key Competencies</option>
+                        <option value="evaluation">Evaluation Criteria</option>
+                    </select>
+                    <button id="load-data-btn">Scan Document Database</button>
+                </div>
+                
+                <div class="content-display" id="data-display">
+                    [AWAITING SYSTEM QUERY...]
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Load the extracted PDF data -->
+    <script src="../../data/pdf_content.js"></script>
+    <script>
+        document.getElementById('load-data-btn').addEventListener('click', () => {
+            const display = document.getElementById('data-display');
+            display.innerHTML = "Processing data...";
+            
+            setTimeout(() => {
+                if (typeof pdfData !== 'undefined' && pdfData.lomloe) {
+                    // Simulating a "scan" effect
+                    const text = pdfData.lomloe.content;
+                    // For the sake of the demo, we show the first 1500 chars to not overwhelm the UI
+                    display.textContent = text.substring(0, 1500) + "\n\n[... DATA TRUNCATED FOR DISPLAY ...]";
+                } else {
+                    display.innerHTML = "<span style='color: red;'>ERROR: PDF Data not found or extraction failed.</span>";
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

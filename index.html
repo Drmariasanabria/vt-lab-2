@@ -1,59 +1,75 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VT Lab 2 | UNICAN</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="grid-background"></div>
-    
-    <header class="cyber-header">
-        <div class="logo-container">
-            <h1 class="glitch" data-text="VT_LAB_2.0">VT_LAB_2.0</h1>
-            <p class="subtitle">Primary English Didactics & Research Platform</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="VT Lab 2 is a modern hub for English Primary Didactics and Bachillerato LOMLOE curriculum exploration.">
+    <title>VT Lab 2 | Didactics & LOMLOE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
+    <div class="startup" id="startup" aria-live="polite" aria-label="VT Lab 2 loading">
+      <div class="startup__aurora"></div>
+      <div class="startup__panel">
+        <div class="startup__mark" aria-hidden="true">VT2</div>
+        <p class="startup__eyebrow">Starting VT Lab 2</p>
+        <div class="startup__bar" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+
+    <main class="site-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="orbital-field" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
         </div>
-        <div class="unican-badge">
-            <span>UNIVERSIDAD DE CANTABRIA</span>
+        <nav class="topbar" aria-label="Primary navigation">
+          <a class="brand" href="./index.html" aria-label="VT Lab 2 home">
+            <span class="brand__glyph">VT2</span>
+            <span>Lab</span>
+          </a>
+          <a class="topbar__link" href="./teacher/">Teacher Login</a>
+        </nav>
+        <div class="hero__content">
+          <p class="kicker">Primary Education & Bachillerato LOMLOE</p>
+          <h1 id="hero-title">VT Lab 2</h1>
+          <p class="subtitle">A vibe-coding project by Dr María Sanabria (Universidad de Cantabria)</p>
+          <p class="hero__description">A modern platform designed to explore the Bachillerato LOMLOE curriculum and Primary Education English methodologies. Includes research questionnaires, interactive tools, and data collection.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#student-access">Student Access</a>
+            <a class="button button--ghost" href="#research">Teaching + Research</a>
+          </div>
         </div>
-    </header>
+      </section>
 
-    <main class="dashboard">
-        <section class="glass-panel main-intro">
-            <h2>System Initialization...</h2>
-            <p>Welcome to VT Lab 2. Select a module to begin your primary English didactics training or access the Bachillerato curriculum compass.</p>
-        </section>
-
-        <div class="modules-grid">
-            <a href="modules/lomloe-compass/index.html" class="module-card">
-                <div class="card-icon">[01]</div>
-                <h3>LOMLOE Compass</h3>
-                <p>Curriculum mapper for Bachillerato and ESO. Activity planning and normative guidance.</p>
-                <div class="cyber-line"></div>
-            </a>
-
-            <a href="modules/didactics-hub/index.html" class="module-card">
-                <div class="card-icon">[02]</div>
-                <h3>Didactics Hub</h3>
-                <p>Methodology of the English Language. Approaches, strategies, and practical scenarios for Primary Ed.</p>
-                <div class="cyber-line"></div>
-            </a>
-
-            <a href="modules/research/index.html" class="module-card">
-                <div class="card-icon">[03]</div>
-                <h3>Research Data</h3>
-                <p>Pre and Post task questionnaires. Data export for educational research and tracking.</p>
-                <div class="cyber-line"></div>
-            </a>
+      <section class="section" id="student-access" aria-labelledby="student-access-title">
+        <div class="section__intro">
+          <p class="kicker">Student Login</p>
+          <h2 id="student-access-title">Enter with a cohort code</h2>
         </div>
+        <div id="student-app"></div>
+      </section>
+
+      <section class="section split" id="research" aria-labelledby="research-title">
+        <div>
+          <p class="kicker">Teaching + Research</p>
+          <h2 id="research-title">Classroom experimentation with a research spine</h2>
+        </div>
+        <p>VT Lab 2 is completely redesigned with UNICAN's visual identity, powered by an AI-extracted knowledge base from PDF documents. It is tailored for Primary Education English teachers and Bachillerato curriculum planning, offering a built-in research questionnaire tool.</p>
+      </section>
+
     </main>
 
-    <footer class="cyber-footer">
-        <p>&copy; 2026 Dr. María Sanabria | Vibe-coded Educational Resource</p>
+    <footer class="footer">
+      VT Lab 2 · Dr María Sanabria · Universidad de Cantabria
     </footer>
 
-    <script src="assets/js/main.js"></script>
-</body>
+    <!-- Scripts -->
+    <script type="module" src="./assets/js/firebase.js"></script>
+    <script src="./assets/js/vtlab-ui.js"></script>
+    <script src="./assets/js/portal.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
 </html>
